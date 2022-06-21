@@ -21,7 +21,9 @@ function show() {
 fullScreenButton.addEventListener('click', () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
-    // fullScreenButton.style.display = "none";
+    fullScreenButton.innerHTML = "Exit full screen";
+    document.querySelector('label').style.display = "none";
+    document.querySelector('.disabled').disabled = true;
     document.querySelector('#pwd-cont').style.display = "block";
   }
   else {
@@ -30,6 +32,8 @@ fullScreenButton.addEventListener('click', () => {
     if (pwd === pin && pwd != "") {
       document.exitFullscreen();
       fullScreenButton.textContent = 'Enter Full Screen';
+      document.querySelector('label').style.display ="block";
+      document.querySelector('.disabled').disabled = false;
     }
 
 
