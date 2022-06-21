@@ -4,13 +4,13 @@ const reaquireCheckbox = document.querySelector('#reacquireCheckbox');
 const fullScreenButton = document.querySelector('#fullScreenButton');
 var pin = document.querySelector('#pin').value;
 var pwd = document.querySelector('#pwd').value;
-document.querySelector('.disabled').disabled = true;
+// document.querySelector('.disabled').disabled = true;
 document.querySelector('button').style.display = "none";
 document.querySelector('#pwd-cont').style.display = "none";
-document.querySelector('label').style.display = "none";
+document.querySelector('.disabled').style.display = "none";
 function show() {
   // if (pin != "") {
-  document.querySelector('.disabled').disabled = false;
+  // document.querySelector('.disabled').disabled = false;
   document.querySelector('button').style.display = "block";
   document.querySelector('label').style.display ="block";
   document.querySelector('#pin-cont').style.visibility = "hidden";
@@ -22,8 +22,8 @@ fullScreenButton.addEventListener('click', () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
     fullScreenButton.innerHTML = "Exit full screen";
-    document.querySelector('label').style.display = "none";
-    document.querySelector('.disabled').disabled = true;
+    document.querySelector('.disabled').style.display = "none";
+    // document.querySelector('.disabled').disabled = true;
     document.querySelector('#pwd-cont').style.display = "block";
   }
   else {
@@ -32,8 +32,9 @@ fullScreenButton.addEventListener('click', () => {
     if (pwd === pin && pwd != "") {
       document.exitFullscreen();
       fullScreenButton.textContent = 'Enter Full Screen';
-      document.querySelector('label').style.display ="block";
-      document.querySelector('.disabled').disabled = false;
+      document.querySelector('.disabled').style.display ="block";
+      // document.querySelector('.disabled').disabled = false;
+
     }
 
 
