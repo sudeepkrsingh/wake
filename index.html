@@ -1,149 +1,171 @@
 <!DOCTYPE html>
+<html lang="en-us">
 
 <head>
-    <title>
-        Recorder v2.2
-    </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mozilla splash page</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <style>
+    /* header and body setup */
+
+    html {
+      font-family: 'Open Sans', sans-serif;
+      background: url(pattern.png);
+    }
+
+    body {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      position: relative;
+    }
+
+    /* Header styling */
+
+    header {
+      height: 150px;
+    }
+
+    header img {
+      width: 100px;
+      position: absolute;
+      right: 32.5px;
+      top: 32.5px;
+    }
+
+    h1 {
+      font-size: 50px;
+      line-height: 140px;
+      margin: 0 0 0 32.5px;
+    }
+
+    /* main section and video styling */
+
+    main {
+      background: #ccc;
+    }
+
+    article {
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 2;
+    }
+
+    iframe {
+      float: left;
+      margin: 0 20px 20px 0;
+      max-width: 100%;
+    }
+
+    /* further info links */
+
+    .further-info {
+      clear: left;
+      padding: 40px 0;
+      background: #c13832;
+      box-shadow: inset 0 3px 2px rgba(0, 0, 0, 0.5),
+        inset 0 -3px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .further-info a {
+      width: 25%;
+      display: block;
+      float: left;
+    }
+
+    .further-info img {
+      max-width: 100%;
+    }
+
+    .clearfix {
+      clear: both;
+    }
+
+    /* Red panda image */
+
+    .red-panda img {
+      display: block;
+      max-width: 100%;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container mt-3">
-    <span><a id="download" style="display: none;"><button type="button" class="btn btn-primary mb-4"> Download</button></a></span>
-    <button type="button" class="btn btn-danger" id="stop" disabled>Stop</button>
-    <button type="button" onclick="recordAudio()" class="btn btn-info">Record Audio</button>
-    <button type="button" onclick="recordVideo()" class="btn btn-info">Record Video</button>
-    <button type="button" onclick="recordScreen()" class="btn btn-info">Record Screen</button>
-    <div class="p-5">
-        <video autoplay height='480' width="640" muted></video>
+  <header>
+    <h1>Mozilla</h1>
+    <!-- insert <img> element, link to the small
+          version of the Firefox logo -->
+    <img alt="Mozilla firefox logo"
+      
+      src="firefox_logo-only_RGB120px.png">
+  </header>
+
+  <main>
+    <article>
+      <!-- insert iframe from youtube -->
+      <iframe width="400" height="315" src="https://www.youtube.com/embed/ojcNcvb1olg"
+        title="Choose Independent - Choose Firefox" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      <h2>Rocking the free web</h2>
+
+      <p>Mozilla are a global community of technologists, thinkers, and builders, working together to keep the Internet
+        alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this
+        act of human collaboration across an open platform is essential to individual growth and our collective future.
+      </p>
+
+      <p>Click on the images below to find more information about the cool stuff Mozilla does. <a
+          href="https://www.flickr.com/photos/mathiasappel/21675551065/">Red panda picture</a> by Mathias Appel.</p>
+    </article>
+
+    <div class="further-info">
+      <!-- insert images with srcsets and sizes -->
+      <a href="https://www.mozilla.org/en-US/firefox/new/">
+        <img 
+        srcset="firefox_logo-only_RGB120px.png 120w, firefox_logo-only_RGB400px.png 400w"
+        sizes="(max-width: 500px) 120px, 400px"
+        src="firefox_logo-only_RGB400px.png" alt="firefox logo">
+      </a>
+      <a href="https://www.mozilla.org/">
+        <img 
+        srcset="mozilla-dinosaur-head120px.png 120w, mozilla-dinosaur-head400px.png 400w"
+        sizes="(max-width: 500px) 120px, 400px"
+        src="mozilla-dinosaur-head400px.png" alt="dinosaur head">
+      </a>
+      <a href="https://addons.mozilla.org/">
+        <img 
+        srcset="firefox-addons120px.jpg 120w, firefox-addons400px.jpg 400w"
+        sizes="(max-width: 500px) 120px, 400px"
+        src="firefox-addons400px.jpg" alt="firefox addon">
+      </a>
+      <a href="https://developer.mozilla.org/en-US/">
+        <img src="mdn.svg" alt="mdn">
+      </a>
+      <div class="clearfix"></div>
     </div>
+
+    <div class="red-panda">
+      <!-- insert picture element -->
+      <picture>
+        <source media="(max-width: 600px) "
+        srcset="red-panda60 portrait .jpg">
+
+        <img 
+        src="red-panda1200px.jpg" 
+        alt="red-panda" 
+        >
+      </picture>
     </div>
+
+  </main>
 </body>
-<script>
-    let shouldStop = false;
-    let stopped = false;
-    const videoElement = document.getElementsByTagName("video")[0];
-    const downloadLink = document.getElementById('download');
-    const stopButton = document.getElementById('stop');
-    function startRecord() {
-        $('.btn-info').prop('disabled', true);
-        $('#stop').prop('disabled', false);
-        $('#download').css('display', 'none')
-    }
-    function stopRecord() {
-        $('.btn-info').prop('disabled', false);
-        $('#stop').prop('disabled', true);
-        $('#download').css('display', 'block')
-    }
-    const audioRecordConstraints = {
-        echoCancellation: true
-    }
-
-    stopButton.addEventListener('click', function () {
-        shouldStop = true;
-    });
-
-    const handleRecord = function ({stream, mimeType}) {
-        startRecord()
-        let recordedChunks = [];
-        stopped = false;
-        const mediaRecorder = new MediaRecorder(stream);
-
-        mediaRecorder.ondataavailable = function (e) {
-            if (e.data.size > 0) {
-                recordedChunks.push(e.data);
-            }
-
-            if (shouldStop === true && stopped === false) {
-                mediaRecorder.stop();
-                stopped = true;
-            }
-        };
-
-        mediaRecorder.onstop = function () {
-            const blob = new Blob(recordedChunks, {
-                type: mimeType
-            });
-            recordedChunks = []
-            const filename = window.prompt('Enter file name');
-            downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = `${filename || 'recording'}.webm`;
-            stopRecord();
-            videoElement.srcObject = null;
-        };
-
-        mediaRecorder.start(200);
-    };
-
-    async function recordAudio() {
-        const mimeType = 'audio/webm';
-        shouldStop = false;
-        const stream = await navigator.mediaDevices.getUserMedia({audio: audioRecordConstraints});
-        handleRecord({stream, mimeType})
-    }
-
-    async function recordVideo() {
-        const mimeType = 'video/webm';
-        shouldStop = false;
-        const constraints = {
-            audio: {
-                "echoCancellation": true
-            },
-            video: {
-                "width": {
-                    "min": 640,
-                    "max": 1024
-                },
-                "height": {
-                    "min": 480,
-                    "max": 768
-                }
-            }
-        };
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        videoElement.srcObject = stream;
-        handleRecord({stream, mimeType})
-    }
-
-    async function recordScreen() {
-        const mimeType = 'video/webm';
-        shouldStop = false;
-        const constraints = {
-            video: {
-                cursor: 'motion'
-            }
-        };
-        if(!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia)) {
-            return window.alert('Screen Record not supported!')
-        }
-        let stream = null;
-        const displayStream = await navigator.mediaDevices.getDisplayMedia({video: {cursor: "motion"}, audio: {'echoCancellation': true}});
-        if(window.confirm("Record audio with screen?")){
-            const audioContext = new AudioContext();
-
-            const voiceStream = await navigator.mediaDevices.getUserMedia({ audio: {'echoCancellation': true}, video: false });
-            const userAudio = audioContext.createMediaStreamSource(voiceStream);
-            
-            const audioDestination = audioContext.createMediaStreamDestination();
-            userAudio.connect(audioDestination);
-
-            if(displayStream.getAudioTracks().length > 0) {
-                const displayAudio = audioContext.createMediaStreamSource(displayStream);
-                displayAudio.connect(audioDestination);
-            }
-
-            const tracks = [...displayStream.getVideoTracks(), ...audioDestination.stream.getTracks()]
-            stream = new MediaStream(tracks);
-            handleRecord({stream, mimeType})
-        } else {
-            stream = displayStream;
-            handleRecord({stream, mimeType});
-        };
-        videoElement.srcObject = stream;
-    }
-</script>
 
 </html>
